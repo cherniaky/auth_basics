@@ -1,0 +1,30 @@
+{
+  "name": "auth_basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "devstart": "nodemon app.js",
+      "serverstart": "SET DEBUG=auth_basics:* & npm run devstart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CherniakYura/auth_basics.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CherniakYura/auth_basics/issues"
+  },
+  "homepage": "https://github.com/CherniakYura/auth_basics#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.1.7",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
+  }
+}
