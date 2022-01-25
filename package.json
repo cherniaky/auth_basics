@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "devstart": "nodemon app.js",
-      "serverstart": "SET DEBUG=auth_basics:* & npm run devstart"
+    "devstart": "nodemon app.js",
+    "serverstart": "SET DEBUG=auth_basics:* & npm run devstart"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/CherniakYura/auth_basics#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
