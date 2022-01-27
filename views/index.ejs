@@ -19,7 +19,7 @@
 <br>
 <!-- <%= locals.currentUser %> -->
     <% if (user) {%>
-        <h1>WELCOME BACK <%= user.username %>
+        <h1>WELCOME BACK <%= locals.currentUser.username %>
         </h1>
         <a href="/log-out">LOG OUT</a>
         <% } else { %>

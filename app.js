@@ -27,7 +27,6 @@ app.set("view engine", "ejs");
 
 passport.use(
     new LocalStrategy((username, password, done) => {
-
         User.findOne({ username: username }, (err, user) => {
             if (err) {
                 return done(err);
@@ -35,7 +34,6 @@ passport.use(
             if (!user) {
                 return done(null, false, { message: "Incorrect username" });
             }
-
 
             bcrypt.compare(password, user.password, (err, res) => {
                 if (res) {
@@ -50,7 +48,7 @@ passport.use(
             // if (user.password !== password) {
             //     return done(null, false, { message: "Incorrect password" });
             // }
- 
+
             // return done(null, user);
         });
     })
@@ -66,13 +64,28 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(
+    session({
+        secret: "cats",
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 2,
+        },
+    })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
+    next();
+});
+
+app.use(function (req, res, next) {
+    console.log(req.session);
+    console.log(req.user);
     next();
 });
 
