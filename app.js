@@ -6,6 +6,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
+var nconf = require("nconf");
 
 const mongoDb =
     "mongodb+srv://cherniak:cherniak@cluster0.h6mkt.mongodb.net/Cluster0?retryWrites=true&w=majority";
@@ -63,6 +64,10 @@ passport.deserializeUser(function (id, done) {
         done(err, user);
     });
 });
+
+//C:/myCode/JS/auth_basics/sample.json
+nconf.file("../auth_basics/sample.json");
+console.log(nconf.get("ho"));
 
 app.use(
     session({
